@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Gothic A1", sans-serif;
+}
+
+.container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 640px;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.app {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-radius: 2rem;
+}
+
+.app::-webkit-scrollbar {
+  width: 0;
+}
+
+.intro {
+  background: url("/img/start1.jpg") no-repeat;
+  background-position: center top;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 1.3rem;
+  transform: translateX(-120%);
+  transition: transform 0.3s ease-out;
+}
+
+.intro.active {
+  transform: translateX(0%);
+}
+
+.intro h1 {
+  color: #fff;
+  padding-bottom: 1.2rem;
+  font-size: 35px;
+  font-weight: 800;
+  text-align: end;
+}
+
+.intro span {
+  display: inline-block;
+  padding-top: 1rem;
+}
+
+.intro button {
+  display: block;
+  width: 210px;
+  height: 45px;
+  margin: 0.7rem auto;
+  border: 2px solid #fff;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: all 80ms ease-in-out;
+}
+
+.intro button:active {
+  transform: scale(0.95);
+}
+
+.home {
+  padding: 1rem 0.5rem;
+  transform: translateX(120%);
+  transition: transform 0.3s ease-out;
+  padding-bottom: 60px;
+}
+
+.home.active {
+  transform: translateX(0%);
+}
+
+.home-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+}
+
+.home-top i {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.home-top .logo {
+  font-size: 15px;
+  color: #2f3e46;
+  font-weight: 800;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.trans-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem 0;
+}
+
+.trans-buttons .trans-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  width: 70px;
+  height: 60px;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: transform 80ms ease-in-out;
+}
+
+.trans-buttons .trans-button:active {
+  transform: scale(0.95);
+}
+
+.trans-buttons .trans-button .icon i {
+  font-size: 18px;
+}
+
+.trans-buttons .trans-button span {
+  font-size: 11px;
+  text-transform: capitalize;
+}
+
+#bus {
+  color: #cad2c5;
+}
+
+#subway {
+  color: #84a98c;
+}
+
+#train {
+  color: #52796f;
+}
+
+#airport {
+  color: #354f52;
+}
+
+.content-box h4 {
+  color: #2f3e46;
+}
+
+.content-box.path {
+  margin-bottom: 2rem;
+}
+
+.content-box.path h4 {
+  margin-bottom: 1rem;
+}
+
+.content-box .path-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 342px;
+}
+
+.content-box input {
+  display: inline-block;
+  width: 300px;
+  height: 40px;
+  border-radius: 1rem;
+  border: 1px solid #2f3e46;
+  background-color: #2f3e46;
+  outline: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+
+.content-box .input-box {
+  position: relative;
+}
+
+.content-box .input-box input::placeholder {
+  color: #ddd;
+  font-size: 12px;
+}
+
+.swich-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swich-button i {
+  font-size: 20px;
+}
+
+.content-box.recommend .content1 {
+  background: url("/img/jeju.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 135px;
+  width: 315px;
+  margin: 1rem auto;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.7rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.content-box.recommend .content h4 {
+  font-size: 13px;
+  color: #fff;
+}
+
+.content-box.recommend .content span {
+  font-size: 18px;
+}
+
+.content-box.recommend .content2 {
+  background: url("/img/gangneung.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 135px;
+  width: 315px;
+  margin: 0.5rem auto;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.7rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.app-bottom.active {
+  position: absolute;
+  bottom: 0;
+  z-index: 999;
+  background-color: #2f3e46;
+  width: 360px;
+  height: 50px;
+  display: block;
+}
+
+.app-bottom {
+  display: none;
+}
+
+.app-bottom ul {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  list-style: none;
+  display: grid;
+  width: 100%;
+  padding: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  place-content: center;
+}
+
+.app-bottom ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-bottom ul li a {
+  text-decoration: none;
+}
+
+.app-bottom ul i {
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}

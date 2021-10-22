@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traby(Travel-by)</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="intro app active">
+            <h1>어디론가 <span>떠나고 싶다면?</span></h1>
+            <button class="intro-button">지금 떠나기</button>
+        </div>
+        <div class="app-bottom">
+            <ul class="app-bar">
+                <li class="home-button"><a href="#"><i class="ri-home-2-fill"></i></a></li>
+                <li><a href="#"><i class="ri-time-fill"></i></a></li>
+                <li><a href="#"><i class="ri-notification-4-fill"></i></a></li>
+                <li><a href="#"><i class="ri-settings-3-fill"></i></a></li>
+            </ul>
+        </div>
+        <div class="home app">
+            <div class="home-top">
+                <div class="menu-button">
+                    <i class="ri-menu-2-line"></i>
+                </div>
+                <div class="logo">
+                    <h3>Traby</h3>
+                </div>
+                <div class="user">
+                    <i class="ri-user-line"></i>
+                </div>
+            </div>
+            <div class="trans-buttons">
+                <div class="trans-button" id="bus">
+                    <div class="icon"><i class="ri-bus-2-line"></i></div>
+                    <span>Bus</span>
+                </div>
+                <div class="trans-button" id="subway">
+                    <div class="icon"><i class="ri-subway-line"></i></div>
+                    <span>Subway</span>
+                </div>
+                <div class="trans-button" id="train">
+                    <div class="icon"><i class="ri-train-line"></i></div>
+                    <span>Train</span>
+                </div>
+                <div class="trans-button" id="airport">
+                    <div class="icon"><i class="ri-plane-line"></i></div>
+                    <span>Airport</span>
+                </div>
+            </div>
+            <div class="content-box path">
+                <h4>어디로 갈까요?</h4>
+                <div class="path-box">
+                    <div class="input-box">
+                        <input type="text" class="path-from" placeholder="출발지를 입력하세요">
+                    </div>
+                    <div class="swich-button">
+                        <i class="ri-arrow-down-line"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="path-to" placeholder="도착지를 입력하세요">
+                    </div>
+                </div>
+            </div>
+            <div class="content-box recommend">
+                <h4>여기는 어때요?</h4>
+                <div class="content content1">
+                    <h4><span>제주도</span>로 떠나볼까요?</h4>
+                </div>
+                <div class="content content2">
+                    <h4><span>강릉</span>으로 떠나볼까요?</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
