@@ -8,9 +8,14 @@ const bus = document.querySelector('.bus');
 const quick_path_button = document.querySelector('.quick-path');
 const cheap_path_button = document.querySelector('.cheap-path');
 
+const members = document.querySelector('.members');
+const non_members = document.querySelector('.non-members');
+const members_area = document.querySelector('.members-area');
+const non_members_area = document.querySelector('.non-members-area');
+
 const bus_search_result = document.querySelector('.bus-search-result');
 const td = document.querySelectorAll('td');
-const seleted = document.querySelector('.selected');
+const selected = document.querySelector('.selected');
 const bus_seat = document.querySelector('.bus-seat');
 //let length = 0;
 let active = [];
@@ -28,6 +33,24 @@ td.forEach((e) => {
         });
 
         //console.log(activeArr);
+
+        if(e.classList.contains('active')) {
+            console.log(activeArr);
+        } else {
+            e.classList.remove('active');
+            for(let i = 0; i < active.length; i++) {
+                if(active[i] === e.innerText) {
+                    active.splice(i, 1);
+                    i--;
+                }
+            }
+            let index = activeArr.indexOf(e.innerText);
+            if (index > -1) {
+                activeArr.splice(index, 1);
+            }
+            console.log(active)
+            console.log(activeArr)
+        }
 
         if(activeArr.length > 0) {
             //console.log(e.innerText);
@@ -48,28 +71,87 @@ td.forEach((e) => {
                                 </div>
                                 <button class="selected-booking">결제하기</button>
                 `;
-                selected.insertAdjacentHTML('afterbegin', content);
+
+                selected.innerHTML = content;
             }
             selectedBooking();
-        } 
+        } else {
+            selected.classList.remove('active');
+            bus_seat.classList.remove('active');
+        }
+
+        document.querySelector('.selected-booking').addEventListener('click', () => {
+            document.querySelector('.bus-booking').classList.remove('active');
+            document.querySelector('.booking-bus-seat').classList.add('active');
+        })
+
+        const payment_info = document.querySelector('.payment-info');
+
+        let info = `
+                    <div class="trans-info">
+                        <div class="trans-text">
+                            <p>출발</p>
+                            <i class="ri-arrow-right-line"></i>
+                            <p>도착</p>
+                        </div>
+                        <div class="trans-time">
+                            <div class="trans-start-time">${bus_contents[3].start_time}</div>
+                            <div class="trans-arrival-time">${bus_contents[3].arrival_time}</div>
+                        </div>
+                        <div class="trans-destination">
+                            <div class="trans-start-destination">${bus_contents[3].start}</div>
+                            <div class="trans-arrival-destination">${bus_contents[3].arrival}</div>
+                        </div>
+                        </div>
+                        <div class="seat-info">
+                            <div class="trans-class">${bus_contents[3].class}</div>
+                            <div class="payment-seat-number">${activeArr}번</div>
+                        </div>
+                        <div class="payment-price-info">
+                            <p>결제 금액</p>
+                            <div class="payment-price">${13800 * activeArr.length}원</div>
+                        </div>
+                    `;
+
+        payment_info.innerHTML = info;
     })
 })
 
-/*
-if(Array.prototype.slice.call(td).indexOf('active') === -1) {
-            activeArr.length = 0;
-        }
+const booking_button = document.querySelectorAll('.booking-button'); 
 
- e.addEventListener('click', () => {
-                e.classList.remove('active');
-                for(let i = 0; i < activeArr.length; i++) {
-                    if(active[i] === e.innerText) {
-                        active.splice(i, 1);
-                        i--;
-                    }
-                }
-            })
-*/
+booking_button.forEach((e) => {
+    e.addEventListener('click', () => {
+        bus.classList.remove('active');
+        document.querySelector('.bus-booking').classList.add('active');
+    })
+})
+
+const previous1 = document.querySelector('.previous1');
+const previous2 = document.querySelector('.previous2');
+
+previous1.addEventListener('click', () => {
+    document.querySelector('.bus-booking').classList.remove('active');
+    bus.classList.add('active');
+})
+
+previous2.addEventListener('click', () => {
+    document.querySelector('.booking-bus-seat').classList.remove('active');
+    document.querySelector('.bus-booking').classList.add('active');
+})
+
+members.addEventListener('click', () => {
+    non_members.classList.remove('active');
+    non_members_area.classList.remove('active');
+    members.classList.add('active');
+    members_area.classList.add('active');
+})
+
+non_members.addEventListener('click', () => {
+    members.classList.remove('active');
+    members_area.classList.remove('active');
+    non_members.classList.add('active');
+    non_members_area.classList.add('active');
+})
 
 intro_button.addEventListener('click', () => {
     intro.classList.remove('active');
@@ -137,8 +219,6 @@ const bus_contents = [
     }
 ]
 
-//bus_search_result.innerHTML = '';
-
 for(let i = 0; i < bus_contents.length; i++) {
     let content = `
                     <div class="path-result-content">
@@ -168,10 +248,6 @@ for(let i = 0; i < bus_contents.length; i++) {
     bus_search_result.insertAdjacentHTML('beforeend', content);
 }
 
-const booking_button = document.querySelector('click', () => {
-
-})
-
 function removePathButton () {
     quick_path_button.classList.remove('active');
     cheap_path_button.classList.remove('active');
@@ -186,4 +262,3 @@ cheap_path_button.addEventListener('click', () => {
     removePathButton();
     cheap_path_button.classList.add('active');
 })
-
