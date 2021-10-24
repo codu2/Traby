@@ -152,6 +152,7 @@
             </div>
             <button class="bus-search">조회하기</button>
             <div class="bus-search-result">
+                <!--
                 <div class="path-result-content">
                     <div class="path-icon">
                         <i class="ri-bus-2-line"></i>
@@ -175,11 +176,12 @@
                     </div>
                     <button>좌석 예매하기</button>
                 </div>
+                -->
             </div>
         </div>
-        <div class="booking app">
-            <div class="booking-top">
-                <div class="previous">
+        <div class="bus-booking app active">
+            <div class="bus-booking-top">
+                <div class="previous1">
                     <i class="ri-arrow-left-line"></i>
                 </div>
                 <h3>좌석 선택하기</h3>
@@ -200,7 +202,7 @@
                             <td>13</td><td>14</td><td></td><td>15</td><td>16</td>
                         </tr>
                         <tr>
-                            <td class="active">17</td><td>18</td><td></td><td>19</td><td>20</td>
+                            <td>17</td><td>18</td><td></td><td>19</td><td>20</td>
                         </tr>
                         <tr>
                             <td>21</td><td>22</td><td></td><td>23</td><td>24</td>
@@ -223,18 +225,61 @@
                     </tbody>
                 </table>
                 <div class="selected">
-                    <div class="selected-seat-info">
-                        <div class="selected-seat">
-                            <p>선택 좌석</p>  
-                            <div class="seat-number">17번</div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="booking-bus-seat app">
+            <div class="bus-booking-top">
+                <div class="previous2">
+                    <i class="ri-arrow-left-line"></i>
+                </div>
+                <h3>결제하기</h3>
+            </div>
+            <div class="payment">
+                <div class="payment-tab">
+                    <div class="members active">회원</div>
+                    <div class="non-members">비회원</div>
+                </div>
+                <div class="payment-area">
+                    <div class="members-area active">
+                        <input type="text" placeholder="아이디">
+                        <input type="password" placeholder="비밀번호">
+                    </div>
+                    <div class="non-members-area">
+                        <input type="text" placeholder="이름">
+                        <input type="text" placeholder="휴대폰 번호">
+                        <input type="text" placeholder="비밀번호 4자리">
+                    </div>
+                </div>
+                <div class="payment-info">
+                    <!--
+                    <div class="trans-info">
+                        <div class="trans-text">
+                            <p>출발</p>
+                            <i class="ri-arrow-right-line"></i>
+                            <p>도착</p>
                         </div>
-                        <div class="seat-price">
-                            <p>총 결제 금액</p>
-                            <div class="price">13,800원</div>
+                        <div class="trans-time">
+                            <div class="trans-start-time">06:25</div>
+                            <div class="trans-arrival-time">09:05</div>
+                        </div>
+                        <div class="trans-destination">
+                            <div class="trans-start-destination">센트럴시티(서울)</div>
+                            <div class="trans-arrival-destination">전주</div>
                         </div>
                     </div>
-                    <button class="selected-booking">결제하기</button>
+                    <div class="seat-info">
+                        <div class="trans-class">일반고속</div>
+                        <div class="payment-seat-number">17,18번</div>
+                    </div>
+                    <div class="payment-price-info">
+                        <p>결제 금액</p>
+                        <div class="payment-price">27400원</div>
+                    </div>
+                    -->
                 </div>
+                <button class="payment-button">결제하기</button>
             </div>
         </div>
     </div>
