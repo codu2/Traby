@@ -524,6 +524,20 @@ body {
   font-weight: 700;
 }
 
+.previous1,
+.previous2 {
+  cursor: pointer;
+}
+
+.bus-booking {
+  transform: translateX(120%);
+  transition: transform 0.3s ease-out;
+}
+
+.bus-booking.active {
+  transform: translateX(0%);
+}
+
 .booking-top {
   display: flex;
   justify-content: space-between;
@@ -622,4 +636,140 @@ td.active {
   padding: 0.7rem 0;
   cursor: pointer;
 }
+
+.booking-bus-seat {
+  transform: translateX(120%);
+  transition: transform 0.3s ease-out;
+}
+
+.booking-bus-seat.active {
+  transform: translateX(0%);
+}
+
+.booking-bus-seat input {
+  outline: none;
+  width: 360px;
+  height: 40px;
+  border: none;
+  background-color: #eee;
+  color: #2f3e46;
+  padding: 0.5rem 1rem;
+}
+
+.booking-bus-seat input::placeholder {
+  color: #2f3e46;
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.payment-tab {
+  display: flex;
+  width: 100%;
+}
+
+.payment-tab > div {
+  background-color: #eee;
+  color: #2f3e46;
+  padding: 0.7rem 1rem;
+  font-size: 13px;
+  width: calc(100% / 2);
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.payment-tab > div.active {
+  background-color: #2f3e46;
+  color: #eee;
+}
+
+.payment-area {
+  position: relative;
+}
+
+.payment-area > div {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.payment-area > div.active {
+  display: block;
+}
+
+.payment-info {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.payment-info {
+  width: 90%;
+  background-color: #eee;
+  color: #2f3e46;
+  margin: 0 auto;
+}
+
+.trans-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.trans-text {
+  border-bottom: 1px solid #2f3e46;
+  padding: 0.5rem 0;
+  display: flex;
+  font-size: 15px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr;
+  text-align: center;
+  font-weight: 600;
+}
+
+.trans-time,
+.trans-destination,
+.seat-info {
+  font-size: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  margin-top: 0.2rem;
+}
+
+.seat-info {
+  font-size: 14px;
+  margin-top: 0.3rem;
+}
+
+.payment-price-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  margin-top: 0.2rem;
+  border-top: 1px solid #2f3e46;
+  padding: 0.5rem 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.payment-button {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: #2f3e46;
+  color: #eee;
+  font-weight: 700;
+  bottom: 50px;
+  border: none;
+  cursor: pointer;
+}
+
 
