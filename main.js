@@ -12,14 +12,64 @@ const bus_search_result = document.querySelector('.bus-search-result');
 const td = document.querySelectorAll('td');
 const seleted = document.querySelector('.selected');
 const bus_seat = document.querySelector('.bus-seat');
+//let length = 0;
+let active = [];
 
 td.forEach((e) => {
     e.addEventListener('click', () => {
         e.classList.toggle('active');
-        seleted.classList.add('active');
+        selected.classList.add('active');
         bus_seat.classList.add('active');
+        //length += 1;
+        active.push(e.innerText);
+
+        let activeArr = active.filter((element, index) => {
+            return active.indexOf(element) === index;
+        });
+
+        //console.log(activeArr);
+
+        if(activeArr.length > 0) {
+            //console.log(e.innerText);
+            // e.classList.contains('active')
+
+            function selectedBooking() {
+                const content = `
+                                <div class="selected-seat-info">
+                                    <div class="selected-seat">
+                                        <p>선택 좌석</p>  
+                                        <div class="seat-number">
+                                        ${activeArr}번</div>
+                                    </div>
+                                    <div class="seat-price">
+                                        <p>총 결제 금액</p>
+                                        <div class="price">${13800 * activeArr.length}원</div>
+                                    </div>
+                                </div>
+                                <button class="selected-booking">결제하기</button>
+                `;
+                selected.insertAdjacentHTML('afterbegin', content);
+            }
+            selectedBooking();
+        } 
     })
 })
+
+/*
+if(Array.prototype.slice.call(td).indexOf('active') === -1) {
+            activeArr.length = 0;
+        }
+
+ e.addEventListener('click', () => {
+                e.classList.remove('active');
+                for(let i = 0; i < activeArr.length; i++) {
+                    if(active[i] === e.innerText) {
+                        active.splice(i, 1);
+                        i--;
+                    }
+                }
+            })
+*/
 
 intro_button.addEventListener('click', () => {
     intro.classList.remove('active');
