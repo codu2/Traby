@@ -461,12 +461,18 @@ body {
 .tab-box .tab {
   font-size: 12px;
   text-align: center;
-  background-color: #2f3e46;
+  background-color: #eee;
   width: 156px;
   padding: 0.6rem 0;
-  color: #fff;
+  color: #2f3e46;
   cursor: pointer;
   font-weight: 700;
+  transition: all 0.2s ease-in-out;
+}
+
+.tab-box .tab.active {
+  background-color: #2f3e46;
+  color: #eee;
 }
 
 .bus-path-box {
@@ -565,7 +571,7 @@ table {
   padding-bottom: 100px;
 }
 
-td {
+td:not(.not) {
   width: 40px;
   height: 35px;
   display: inline-flex;
@@ -577,11 +583,19 @@ td {
   cursor: pointer;
 }
 
+td.not {
+  width: 40px;
+  height: 35px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
 tr.none td {
   margin-bottom: 0;
 }
 
-td.active {
+td:not(.not).active {
   background-color: #2f3e46;
   color: #eee;
 }
@@ -680,6 +694,7 @@ td.active {
   text-align: center;
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.2s ease-in-out;
 }
 
 .payment-tab > div.active {
@@ -772,4 +787,41 @@ td.active {
   cursor: pointer;
 }
 
+.timeline {
+  padding: 1rem 0.5rem;
+  transform: translateX(120%);
+  transition: transform 0.3s ease-out;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.timeline.active {
+  transform: translateX(0%);
+}
+
+.timeline h3 {
+  margin-top: 1rem;
+}
+
+.ticket {
+  margin-top: 2rem;
+}
+
+.cancel {
+  position: absolute;
+  bottom: 50px;
+  width: 360px;
+  height: 40px;
+  color: #eee;
+  background-color: #2f3e46;
+  border: none;
+  padding: 0.5rem 0;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: none;
+}
 
