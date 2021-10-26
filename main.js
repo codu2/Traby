@@ -5,8 +5,6 @@ const home = document.querySelector('.home');
 const app_bottom = document.querySelector('.app-bottom');
 const bus_button = document.getElementById('bus');
 const bus = document.querySelector('.bus');
-const quick_path_button = document.querySelector('.quick-path');
-const cheap_path_button = document.querySelector('.cheap-path');
 const timeline = document.querySelector('.timeline');
 const timeline_button = document.querySelector('.timeline-button');
 
@@ -92,104 +90,6 @@ bus_button.addEventListener('click', () => {
     home.classList.remove('active');
     bus.classList.add('active');
 })
-
-const trans = [
-    {
-        trans: 'bus',
-        start: '센트럴시티(서울)',
-        arrival: '전주',
-        start_time: '07:10',
-        arrival_time: '09:50',
-        class: '일반고속',
-        term: '2시간 40분'
-    },
-    {
-        trans: 'bus',
-        start: '센트럴시티(서울)',
-        arrival: '전주',
-        start_time: '09:00',
-        arrival_time: '11:40',
-        class: '우등고속',
-        term: '2시간 40분'
-    },
-    {
-        trans: 'bus',
-        start: '센트럴시티(서울)',
-        arrival: '전주',
-        start_time: '11:45',
-        arrival_time: '14:25',
-        class: '프리미엄',
-        term: '2시간 40분'
-    },
-    {
-        trans: 'bus',
-        start: '센트럴시티(서울)',
-        arrival: '전주',
-        start_time: '22:00',
-        arrival_time: '24:40',
-        class: '심야프리미엄',
-        term: '2시간 40분'
-    },
-    {
-        trans: 'bus',
-        start: '센트럴시티(서울)',
-        arrival: '전주',
-        start_time: '22:40',
-        arrival_time: '01:20',
-        class: '심야우등',
-        term: '2시간 40분'
-    },
-    {
-        trans: 'train',
-        start: '서울',
-        arrival: '전주',
-        start_time: '07:05',
-        arrival_time: '08:52',
-        class: 'KTX',
-        term: '1시간 47분',
-        price: '34600원'
-    },
-    {
-        trans: 'train',
-        start: '서울',
-        arrival: '전주',
-        start_time: '09:13',
-        arrival_time: '12:55',
-        class: '무궁화호',
-        term: '3시간 42분',
-        price: '17600원'
-    },
-    {
-        trans: 'train',
-        start: '서울',
-        arrival: '전주',
-        start_time: '07:05',
-        arrival_time: '08:52',
-        class: 'KTX-산천',
-        term: '1시간 47분',
-        price: '34600원'
-    },
-    {
-        trans: 'train',
-        start: '서울',
-        arrival: '전주',
-        start_time: '16:38',
-        arrival_time: '18:25',
-        class: 'KTX-산천',
-        term: '1시간 47분',
-        price: '34600원'
-    },
-    {
-        trans: 'train',
-        start: '서울',
-        arrival: '전주',
-        start_time: '21:05',
-        arrival_time: '00:53',
-        class: '무궁화호',
-        term: '3시간 48분',
-        price: '17600원'
-    },
-]
 
 const bus_contents = [
     {
@@ -395,18 +295,3 @@ for(let i = 0; i < booking_button.length; i++) {
         })
     })
 }
-
-function removePathButton () {
-    quick_path_button.classList.remove('active');
-    cheap_path_button.classList.remove('active');
-}
-
-quick_path_button.addEventListener('click', () => {
-    removePathButton();
-    quick_path_button.classList.add('active');
-})
-
-cheap_path_button.addEventListener('click', () => {
-    removePathButton();
-    cheap_path_button.classList.add('active');
-})
