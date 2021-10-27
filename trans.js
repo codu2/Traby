@@ -13,10 +13,6 @@ const price = [];
 const price_index = [];
 const price_cheap = [];
 
-function remove_path_result() {
-    path_result.innerHTML = "";
-}
-
 const trans = [
     {
         trans: 'bus',
@@ -160,115 +156,14 @@ const trans = [
     },
 ]
 
+function remove_path_result() {
+    path_result.innerHTML = "";
+}
+
 function removePathButton () {
     quick_path_button.classList.remove('active');
     cheap_path_button.classList.remove('active');
 }
-
-function show_quick_path() {
-    for(let i = 0; i < trans.length; i++) {
-        start_time[i] = (trans[i].start_hour * 60 * 60 * 1000) + (trans[i].start_min * 60 * 1000);
-        arrival_time[i] = (trans[i].arrival_hour * 60 * 60 * 1000) + (trans[i].arrival_min * 60 * 1000);
-    
-        //시간 표를 위한 계산
-        term_hour.push(parseInt((arrival_time[i] - start_time[i]) / 1000 / 60 / 60));
-        term_min.push(((arrival_time[i] - start_time[i]) / 1000 / 60) % 60);
-    
-        let time = arrival_time[i] - start_time[i];
-    
-        index.push(time);
-        times.push(time+i);
-        index.sort((a, b) => a - b);
-        times.sort((a, b) => a - b);
-    }
-    
-    for(let i = 0; i < trans.length; i++) {
-        result.push(times[i] - index[i]);
-    }
-    
-    //console.log(result);
-    
-    for(let i = 0; i < trans.length; i++) {
-        let start_hour = trans[result[i]].start_hour < 10 ? `0${trans[result[i]].start_hour}` : `${trans[result[i]].start_hour}`;
-        let arrival_hour = trans[result[i]].arrival_hour < 10 ? `0${trans[result[i]].arrival_hour}` : `${trans[result[i]].arrival_hour}`;
-        let start_min = trans[result[i]].start_min < 10 ? `0${trans[result[i]].start_min}` : `${trans[result[i]].start_min}`;
-        let arrival_min = trans[result[i]].arrival_min < 10 ? `0${trans[result[i]].arrival_min}` : `${trans[result[i]].arrival_min}`;
-    
-        let content = `
-                        <div class="path-result-content">
-                            <div class="path-icon">
-                                <i class="ri-bus-2-line"></i>
-                            </div>
-                            <div class="path-desc">
-                                <div class="path-start">
-                                    <div class="start-area">${trans[result[i]].start}</div>
-                                    <div class="start-time">${start_hour} : ${start_min}</div>
-                                </div>
-                                <div class="path-arrow">
-                                    <i class="ri-arrow-right-line"></i>
-                                </div>
-                                <div class="path-arrival">
-                                    <div class="arrival-area">${trans[result[i]].arrival}</div>
-                                    <div class="arrival-time">${arrival_hour} : ${arrival_min}</div>
-                                </div>
-                            </div>
-                            <div class="ticket-bottom">
-                                <div class="path-class">${trans[result[i]].class}</div>
-                                <p>소요시간 약 <span>${term_hour[result[i]]}시간 ${term_min[result[i]]}분</span></p>
-                            </div>
-                            <button>좌석 예매하기</button>
-                        </div>
-        `;
-        path_result.innerHTML += content;
-    }
-};
-
-function show_cheap_path() {
-    for(let i = 0; i < trans.length; i++) {
-        price_index.push(trans[i].price);
-        price.push(trans[i].price+i);
-        price_index.sort((a, b) => a - b);
-        price.sort((a, b) => a - b);
-    }
-     
-    for(let i = 0; i < trans.length; i++) {
-        price_cheap.push(price[i] - price_index[i]);
-    }
-    
-    for(let i = 0; i < trans.length; i++) {
-        let start_hour = trans[price_cheap[i]].start_hour < 10 ? `0${trans[price_cheap[i]].start_hour}` : `${trans[price_cheap[i]].start_hour}`;
-        let start_min = trans[price_cheap[i]].start_min < 10 ? `0${trans[price_cheap[i]].start_min}` : `${trans[price_cheap[i]].start_min}`;
-        let arrival_hour = trans[price_cheap[i]].arrival_hour < 10 ? `0${trans[price_cheap[i]].arrival_hour}` : `${trans[price_cheap[i]].arrival_hour}`;
-        let arrival_min = trans[price_cheap[i]].arrival_min < 10 ? `0${trans[price_cheap[i]].arrival_min}` : `${trans[price_cheap[i]].arrival_min}`;
-
-        let content = `
-                            <div class="path-result-content">
-                                <div class="path-icon">
-                                    <i class="ri-bus-2-line"></i>
-                                </div>
-                                <div class="path-desc">
-                                    <div class="path-start">
-                                        <div class="start-area">${trans[price_cheap[i]].start}</div>
-                                        <div class="start-time">${start_hour} : ${start_min}</div>
-                                    </div>
-                                    <div class="path-arrow">
-                                        <i class="ri-arrow-right-line"></i>
-                                    </div>
-                                    <div class="path-arrival">
-                                        <div class="arrival-area">${trans[price_cheap[i]].arrival}</div>
-                                        <div class="arrival-time">${arrival_hour} : ${arrival_min}</div>
-                                    </div>
-                                </div>
-                                <div class="ticket-bottom">
-                                    <div class="path-class">${trans[price_cheap[i]].class}</div>
-                                    <p>소요시간 약 <span>${trans[price_cheap[i]].term}</span></p>
-                                </div>
-                                <button>좌석 예매하기</button>
-                            </div>
-            `;
-            path_result.innerHTML += content;
-    }
-};
 
 quick_path_button.addEventListener('click', () => {
     removePathButton();
@@ -285,26 +180,152 @@ cheap_path_button.addEventListener('click', () => {
 })
 
 const quick_search_button = document.querySelector('.quick-search');
-quick_search_button.addEventListener('click', () => {
-    if(quick_path_button.classList.contains('active')) {
-        show_quick_path();
-    } else if(cheap_path_button.classList.contains('active')) {
-        show_cheap_path();
-    };
+const search_start = document.querySelector('.path-from');
+const search_to = document.querySelector('.path-to');
 
-    quick_path_button.addEventListener('click', () => {
-        removePathButton();
-        remove_path_result();
-        cheap_path_button.classList.remove('active');
-        quick_path_button.classList.add('active');
-        show_quick_path();
-    })
-    
-    cheap_path_button.addEventListener('click', () => {
-        removePathButton();
-        remove_path_result();
-        quick_path_button.classList.remove('active');
-        cheap_path_button.classList.add('active');
-        show_cheap_path();
-    })
+quick_search_button.addEventListener('click', () => {
+    if(search_start.value.length !== 0 && search_to.value.length !== 0) {
+        //console.log('yes') 두 input 모두 입력되어야만 for문이 실행됨
+        let new_trans = [];
+        new_trans = trans.filter(x => {
+            return x.start.match(search_start.value) && x.arrival.match(search_to.value)
+        })
+        console.log(new_trans)
+
+        function show_quick_path() {
+            for(let i = 0; i < new_trans.length; i++) {
+                start_time[i] = (new_trans[i].start_hour * 60 * 60 * 1000) + (new_trans[i].start_min * 60 * 1000);
+                arrival_time[i] = (new_trans[i].arrival_hour * 60 * 60 * 1000) + (new_trans[i].arrival_min * 60 * 1000);
+            
+                //시간 표를 위한 계산
+                term_hour.push(parseInt((arrival_time[i] - start_time[i]) / 1000 / 60 / 60));
+                term_min.push(((arrival_time[i] - start_time[i]) / 1000 / 60) % 60);
+            
+                let time = arrival_time[i] - start_time[i];
+            
+                index.push(time);
+                times.push(time+i);
+                index.sort((a, b) => a - b);
+                times.sort((a, b) => a - b);
+            }
+            
+            for(let i = 0; i < new_trans.length; i++) {
+                result.push(times[i] - index[i]);
+            }
+            
+            //console.log(result);
+            
+            for(let i = 0; i < new_trans.length; i++) {
+                let start_hour = new_trans[result[i]].start_hour < 10 ? `0${new_trans[result[i]].start_hour}` : `${new_trans[result[i]].start_hour}`;
+                let arrival_hour = new_trans[result[i]].arrival_hour < 10 ? `0${new_trans[result[i]].arrival_hour}` : `${new_trans[result[i]].arrival_hour}`;
+                let start_min = new_trans[result[i]].start_min < 10 ? `0${new_trans[result[i]].start_min}` : `${new_trans[result[i]].start_min}`;
+                let arrival_min = new_trans[result[i]].arrival_min < 10 ? `0${new_trans[result[i]].arrival_min}` : `${new_trans[result[i]].arrival_min}`;
+            
+                let content = `
+                                <div class="path-result-content">
+                                    <div class="path-icon">
+                                        <i class="ri-bus-2-line"></i>
+                                    </div>
+                                    <div class="path-desc">
+                                        <div class="path-start">
+                                            <div class="start-area">${new_trans[result[i]].start}</div>
+                                            <div class="start-time">${start_hour} : ${start_min}</div>
+                                        </div>
+                                        <div class="path-arrow">
+                                            <i class="ri-arrow-right-line"></i>
+                                        </div>
+                                        <div class="path-arrival">
+                                            <div class="arrival-area">${new_trans[result[i]].arrival}</div>
+                                            <div class="arrival-time">${arrival_hour} : ${arrival_min}</div>
+                                        </div>
+                                    </div>
+                                    <div class="ticket-bottom">
+                                        <div class="path-class">${new_trans[result[i]].class}</div>
+                                        <p>소요시간 약 <span>${term_hour[result[i]]}시간 ${term_min[result[i]]}분</span></p>
+                                    </div>
+                                    <button>좌석 예매하기</button>
+                                </div>
+                `;
+                path_result.innerHTML += content;
+            }
+        };
+
+        function show_cheap_path() {
+            for(let i = 0; i < new_trans.length; i++) {
+                price_index.push(new_trans[i].price);
+                price.push(new_trans[i].price+i);
+                price_index.sort((a, b) => a - b);
+                price.sort((a, b) => a - b);
+            }
+             
+            for(let i = 0; i < new_trans.length; i++) {
+                price_cheap.push(price[i] - price_index[i]);
+            }
+            
+            for(let i = 0; i < new_trans.length; i++) {
+                let start_hour = new_trans[price_cheap[i]].start_hour < 10 ? `0${new_trans[price_cheap[i]].start_hour}` : `${new_trans[price_cheap[i]].start_hour}`;
+                let start_min = new_trans[price_cheap[i]].start_min < 10 ? `0${new_trans[price_cheap[i]].start_min}` : `${new_trans[price_cheap[i]].start_min}`;
+                let arrival_hour = new_trans[price_cheap[i]].arrival_hour < 10 ? `0${new_trans[price_cheap[i]].arrival_hour}` : `${new_trans[price_cheap[i]].arrival_hour}`;
+                let arrival_min = new_trans[price_cheap[i]].arrival_min < 10 ? `0${new_trans[price_cheap[i]].arrival_min}` : `${new_trans[price_cheap[i]].arrival_min}`;
+        
+                let content = `
+                                    <div class="path-result-content">
+                                        <div class="path-icon">
+                                            <i class="ri-bus-2-line"></i>
+                                        </div>
+                                        <div class="path-desc">
+                                            <div class="path-start">
+                                                <div class="start-area">${new_trans[price_cheap[i]].start}</div>
+                                                <div class="start-time">${start_hour} : ${start_min}</div>
+                                            </div>
+                                            <div class="path-arrow">
+                                                <i class="ri-arrow-right-line"></i>
+                                            </div>
+                                            <div class="path-arrival">
+                                                <div class="arrival-area">${new_trans[price_cheap[i]].arrival}</div>
+                                                <div class="arrival-time">${arrival_hour} : ${arrival_min}</div>
+                                            </div>
+                                        </div>
+                                        <div class="ticket-bottom">
+                                            <div class="path-class">${new_trans[price_cheap[i]].class}</div>
+                                            <p>소요시간 약 <span>${new_trans[price_cheap[i]].term}</span></p>
+                                        </div>
+                                        <button>좌석 예매하기</button>
+                                    </div>
+                    `;
+                    path_result.innerHTML += content;
+            }
+        };
+
+        for(let i = 0; i < new_trans.length; i++) {
+            function searchInput() {
+                //if(new_trans[i].start.match(search_start) && new_trans[i].arrival.match(search_to)) {
+                    if(quick_path_button.classList.contains('active')) {
+                        path_result.innerHTML = "";
+                        show_quick_path();
+                    } else if(cheap_path_button.classList.contains('active')) {
+                        path_result.innerHTML = "";
+                        show_cheap_path();
+                    };
+                
+                    quick_path_button.addEventListener('click', () => {
+                        removePathButton();
+                        remove_path_result();
+                        cheap_path_button.classList.remove('active');
+                        quick_path_button.classList.add('active');
+                        show_quick_path();
+                    })
+                    
+                    cheap_path_button.addEventListener('click', () => {
+                        removePathButton();
+                        remove_path_result();
+                        quick_path_button.classList.remove('active');
+                        cheap_path_button.classList.add('active');
+                        show_cheap_path();
+                    })
+                //} 
+            }
+            searchInput();
+        }
+    }
 });
