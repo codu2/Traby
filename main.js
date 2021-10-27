@@ -82,6 +82,7 @@ home_button.addEventListener('click', () => {
     document.querySelector('.booking-bus-seat').classList.remove('active');
     document.querySelector('.bus-booking').classList.remove('active');
     timeline.classList.remove('active');
+    document.querySelector('.path-result').innerHTML = "";
     //intro.classList.add('active');
 })
 
@@ -234,10 +235,11 @@ for(let i = 0; i < booking_button.length; i++) {
                         `;
         
                         selected.innerHTML = content;
+                         
                         document.querySelector('.selected-booking').addEventListener('click', () => {
                             document.querySelector('.bus-booking').classList.remove('active');
                             document.querySelector('.booking-bus-seat').classList.add('active');
-                        })
+                        });
                     }
                     selectedBooking();
                 } else {
